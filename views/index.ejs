@@ -1,24 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
-    <title>Node Sample App</title>
+    <title>Jonesautomotive</title>
 
     <!-- CSS -->
-    <!-- load bootstrap and our own personal stylesheet -->
-    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
 
+    <!-- JQuery -->
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootswatch/3.2.0/superhero/bootstrap.min.css" rel="stylesheet">
+
+    <!-- <script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script> -->
+    <!-- API Key -->
+    <!-- AIzaSyCPWfZXnVdPVsicxeXS34HBxozYptedzfg -->
+    <!-- AIzaSyDbp8qLq5y288_3yYfsxmeDcS8xONTsLfI -->
 </head>
 <body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <span class="navbar-brand">Jonesautomotive</span>
+    </nav>
 
-<div class="container">
-    <div class="jumbotron">
-        <h1>This Is Heroku Awesome!</h1>
-        <p>This is the sample of a tutorial on <a href="https://scotch.io">scotch.io</a></p>
-        <a href="https://scotch.io/tutorials/" class="btn btn-primary btn-lg">View the Tutorial</a>
+    <div id="carousel" class="carousel slide" data-ride="carousel">
+        <!-- Menu -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel" data-slide-to="1"></li>
+            <li data-target="#carousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Items -->
+        <div class="carousel-inner">
+
+            <div class="item active">
+                <img src="images/25.jpg" alt="Slide 1" />
+            </div>
+            <div class="item">
+                <img src="images/25.jpg" alt="Slide 2" />
+            </div>
+            <div class="item">
+                <img src="images/25.jpg" alt="Slide 3" />
+            </div>
+        </div> 
+
+        <a href="#carousel" class="left carousel-control" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a href="#carousel" class="right carousel-control" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
     </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">For all your mechanical repairs! <span class="text-muted">Jonesutomotive does it all.</span></h2>
+          <p class="lead">From oil changes to cambelts, punctures to wheel alignments, full services to warrants of fitness, trucks to trailers, Jonesautomotive can do it. </p>
+      </div>
+      <div class="col-md-5">
+      <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 8
+        });
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbp8qLq5y288_3yYfsxmeDcS8xONTsLfI&callback=initMap"
+    async defer></script>
+          <!-- <div style='overflow:hidden;height:500px;width:500px;'><div id='gmap_canvas' style='height:500px;width:500px;'></div><div><small><a href="http://www.embedgooglemaps.com">Generate your Google map here, quick and easy!                                 Click here                                  Visit our website!</a></small></div><div><small><a href="https://www.amazon.com/Extra-Large-Folding-Kennel-Plastic/dp/B00M3NBJ8E/ref=sr_1_5?s=pet-supplies&ie=UTF8&qid=1470313482&sr=1-5keywords=pet+cage">Pet Wire Cage</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(-41.22279659206596,174.87345202261508),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-41.22279659206596,174.87345202261508)});infowindow = new google.maps.InfoWindow({content:'<strong>Jones Automotive</strong><br>15 Petone Ave, Petone.<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script> -->
+      </div>
+  </div>
+
 </div>
-    
+
+
+
+
 </body>
 </html>

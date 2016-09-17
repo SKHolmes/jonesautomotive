@@ -1,7 +1,30 @@
-body    { 
-	padding-top:50px; 
+.carousel-inner{
+	min-height: 512px;
+	max-height: 640px ;
 }
 
-.container .jumbotron    { 
-	border-radius:40px; 
+.carousel img {
+    max-width: 100%;
+    max-height: 100%;
 }
+.carousel-inner > .item > img {
+    margin: 0 auto;
+}
+
+#carousel{
+	margin-bottom: 16px;
+}
+
+.row{
+	margin-left: 24px !important;
+	margin-right: 24px !important;
+}
+
+#map {
+        height: 250px;
+        width: 400px;
+        border-style: solid;
+        border-width: 3px;
+        border-color: #000000;
+        border-radius: 3px;
+      }
