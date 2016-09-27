@@ -66,29 +66,57 @@
           <p class="lead">From oil changes to cambelts, punctures to wheel alignments, full services to warrants of fitness, trucks to trailers, Jonesautomotive can do it. </p>
       </div>
       <div class="col-md-5">
-      <div id="map"></div>
+          <div id="map"></div>
+          <script>
+              function initMap() {
+                var myLatLng = {lat: -41.2229943, lng: 174.87398310000003};
+
+                var map = new google.maps.Map(document.getElementById('map'), {
+                  center: myLatLng,
+                  zoom: 15
+              });
+
+                var marker = new google.maps.Marker({
+                    position: myLatLng,
+                    map: map,
+                    title: 'Jones Automotive'
+                });
+            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbp8qLq5y288_3yYfsxmeDcS8xONTsLfI&callback=initMap"
+        async defer></script>
+    </div>
+</div>
+<hr class="row featurette">
+<div id="container">
+    <div></div>
+    Node.JS Email application
+    <div>
+        <h1>Mailer In Node.JS</h1>
+        <input id="to" type="text" placeholder="Enter E-mail ID where you want to send" />
+        <input id="subject" type="text" placeholder="Write Subject" />
+        <textarea id="content" cols="40" rows="5" placeholder="Write what you want to send"></textarea>
+        <button id="send_email">Send Email</button>
+        <span id="message"></span>
+    </div>
     <script>
-      function initMap() {
-        var myLatLng = {lat: -41.2229943, lng: 174.87398310000003};
+$(document).ready(function(){
+    var from,to,subject,text;
+    $("#send_email").click(function(){      
+        to=$("#to").val();
+        subject=$("#subject").val();
+        text=$("#content").val();
+        $("#message").text("Sending E-mail...Please wait");
+        $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+        if(data=="sent")
+        {
+            $("#message").empty().html("Email is been sent at "+to+" . Please check inbox !");
+        }
 
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: myLatLng,
-          zoom: 15
-        });
-
-        var marker = new google.maps.Marker({
-            position: myLatLng,
-            map: map,
-            title: 'Jones Automotive'
-        });
-      }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDbp8qLq5y288_3yYfsxmeDcS8xONTsLfI&callback=initMap"
-    async defer></script>
-          <!-- <div style='overflow:hidden;height:500px;width:500px;'><div id='gmap_canvas' style='height:500px;width:500px;'></div><div><small><a href="http://www.embedgooglemaps.com">Generate your Google map here, quick and easy!                                 Click here                                  Visit our website!</a></small></div><div><small><a href="https://www.amazon.com/Extra-Large-Folding-Kennel-Plastic/dp/B00M3NBJ8E/ref=sr_1_5?s=pet-supplies&ie=UTF8&qid=1470313482&sr=1-5keywords=pet+cage">Pet Wire Cage</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><script type='text/javascript'>function init_map(){var myOptions = {zoom:17,center:new google.maps.LatLng(-41.22279659206596,174.87345202261508),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(-41.22279659206596,174.87345202261508)});infowindow = new google.maps.InfoWindow({content:'<strong>Jones Automotive</strong><br>15 Petone Ave, Petone.<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script> -->
-      </div>
-  </div>
-
+});
+    });
+});
+</script>
 </div>
 
 
