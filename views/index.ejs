@@ -107,7 +107,7 @@
                 $("#message").text("Sending E-mail...Please wait");
                 text = (text + "\nContact Number: " + number);
                 subject = (subject + " - " + name);
-                $.get("http://localhost:8080/send",{to:'samualkholmes@gmail.com',subject:subject,text:text},function(data){
+                $.get("https://jonesautomotive.herokuapp.com//send",{to:'samualkholmes@gmail.com',subject:subject,text:text},function(data){
                     if(data=="sent")
                     {
                         $("#message").empty().html("Email has been sent. We will get back to you as soon as we can!");
@@ -131,7 +131,7 @@
 
 <hr class="featurette-divider">
 
-<p class="lead" style="padding: 16px;">Karl Holmes, the owner and operator of Jones Automotive Services has been in the business a long time. With 25 years and counting of experience with mechanical repairs you bet he has seen it, and fixed it all. Whether you need a quick puncture repair or an engine overhaul, come in and see the team at Jones Automotive, they will get you back on the road as quickly as possible. But don't take our word for it here are a few testimonials from our valued customers.</p>
+<p class="lead" style="padding: 16px; text-align: center;">Karl Holmes, the owner and operator of Jones Automotive Services has been in the business a long time. With 25 years and counting of experience with mechanical repairs you bet he has seen it, and fixed it all. Whether you need a quick puncture repair or an engine overhaul, come in and see the team at Jones Automotive, they will get you back on the road as quickly as possible. But don't take our word for it here are a few testimonials from our valued customers.</p>
 <hr class="featurette-divider">
 <h1 style="text-align: center;">Testimonials go here</h1>
 </body>
