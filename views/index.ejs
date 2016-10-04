@@ -98,13 +98,15 @@
     </div>
     <script>
         $(document).ready(function(){
-            var from,subject,text,number;
+            var email,subject,text,number;
             $("#send_email").click(function(){
                 name=$("#name").val();  
                 number=$("#number").val();    
                 subject=$("#subject").val();
                 text=$("#content").val();
+                email=$("#from").val();
                 $("#message").text("Sending E-mail...Please wait");
+                text = (text + "\n\nContact Email: " + email);
                 text = (text + "\nContact Number: " + number);
                 subject = (subject + " - " + name);
                 $.get("https://jonesautomotive.herokuapp.com/send",{to:'samualkholmes@gmail.com',subject:subject,text:text},function(data){
