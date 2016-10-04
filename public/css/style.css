@@ -76,6 +76,10 @@
     text-align: center;
 }
 
+.subText{
+    color: #89a0c4;
+}
+
 h1{
-    text-decoration: underline;
+    color: #89a0c4 !important;
 }
