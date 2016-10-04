@@ -61,11 +61,11 @@
     <hr class="featurette-divider">
 
     <div class="row featurette">
-        <div class="col-md-7">
-          <h2 class="featurette-heading">For all your mechanical repairs! <span class="text-muted">Jonesutomotive does it all.</span></h2>
+        <div class="col-md-7 partition">
+          <h2 class="featurette-heading">For all your mechanical repairs! Jonesutomotive does it all.</h2>
           <p class="lead">From oil changes to cambelts, punctures to wheel alignments, full services to warrants of fitness, trucks to trailers, Jonesautomotive can do it. </p>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-5 partition">
           <div id="map"></div>
           <script>
               function initMap() {
@@ -87,40 +87,54 @@
         async defer></script>
     </div>
 </div>
-<hr class="row featurette">
-<div id="container">
-    <div></div>
-    Node.JS Email application
-    <div>
-        <h1>Mailer In Node.JS</h1>
-        <input id="to" type="text" placeholder="Enter E-mail ID where you want to send" />
-        <input id="subject" type="text" placeholder="Write Subject" />
-        <textarea id="content" cols="40" rows="5" placeholder="Write what you want to send"></textarea>
-        <button id="send_email">Send Email</button>
+
+<hr class="featurette-divider">
+
+<div class="row featurette">
+    <div class="col-md-6 partition">
+        <input id="subject" type="text" class="form-control userInput" placeholder="Subject" />
+        <textarea id="content" class="form-control userInput" rows="5" placeholder="Write your inquiry here."></textarea>
+        <input id="name" type="text" class="form-control userInput" placeholder="Your Name">
+        <input id="from" type="text" class="form-control userInput" placeholder="Your Email">
+        <input id="number" type="text" class="form-control userInput" placeholder="Contact Number" />
+        <button class="btn btn-default userInput" id="send_email">Send Email</button>
         <span id="message"></span>
     </div>
     <script>
-$(document).ready(function(){
-    var from,to,subject,text;
-    $("#send_email").click(function(){      
-        to=$("#to").val();
-        subject=$("#subject").val();
-        text=$("#content").val();
-        $("#message").text("Sending E-mail...Please wait");
-        $.get("https://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
-        if(data=="sent")
-        {
-            $("#message").empty().html("Email is been sent at "+to+" . Please check inbox !");
-        }
+        $(document).ready(function(){
+            var from,subject,text,number;
+            $("#send_email").click(function(){
+                name=$("#name").val();  
+                number=$("#number").val();    
+                subject=$("#subject").val();
+                text=$("#content").val();
+                $("#message").text("Sending E-mail...Please wait");
+                text = (text + "\nContact Number: " + number);
+                subject = (subject + " - " + name);
+                $.get("http://localhost:8080/send",{to:'samualkholmes@gmail.com',subject:subject,text:text},function(data){
+                    if(data=="sent")
+                    {
+                        $("#message").empty().html("Email has been sent. We will get back to you as soon as we can!");
+                    }
+                    else{
+                        $("#message").empty().html("Sorry! There was a problem in sending your email please try again.");
+                    }
 
-});
-    });
-});
-</script>
+                });
+            });
+        });
+    </script>
+    <div class="col-md-6 partition">
+
+        <h1>Contact Information</h1>
+        <h2>Address: 15 Petone Avenue, Petone</h2>
+        <h2>Phone: (04) 1234567</h2>
+        <h2>Email: jonesautomotive@xtra.co.nz</h2>
+    </div>
 </div>
-
-
-
-
+<hr class="featurette-divider">
+<h1 style="text-align: center;">Testimonials go here</h1>
+<hr class="featurette-divider">
+<h6 style="text-align: center;">Sam's awesome website!</h6>
 </body>
 </html>

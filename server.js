@@ -1,7 +1,18 @@
 var express = require('express');
 var app = express();
-var nodemailer = require('nodemailer');
+var nodemailer = require("nodemailer");
+var smtpTransport = require('nodemailer-smtp-transport');
 var router = express.Router();
+
+var transport = nodemailer.createTransport((smtpTransport({
+  service: 'gmail',
+  secureConnection: false, // use SSL
+  port: 587, // port for secure SMTP
+  auth: {
+    user: 'jonesautomotive.mailer@gmail.com',
+    pass: 'ilikepie123'
+  }
+})));
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -13,17 +24,11 @@ app.set('view engine', 'ejs');
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
 
-//Set up SMTP options for mailing.
-var smtpTransport = nodemailer.createTransport("SMTP",{
-	service: "Gmail",
-	auth: {
-		user: 'jonesautomotive.mailer@gmail.com',
-		pass: 'ilikepie123'
-	}
+// set the home page route
+app.get('/', function(req, res) {
+    // ejs render automatically looks in the views folder
+    res.render('index');
 });
-
-app.use('/mail', router);
-router.post('/', handleMail);
 
 app.get('/send',function(req,res){
 	var mailOptions={
@@ -32,7 +37,7 @@ app.get('/send',function(req,res){
 		text : req.query.text
 	}
 	console.log(mailOptions);
-	smtpTransport.sendMail(mailOptions, function(error, response){
+	transport.sendMail(mailOptions, function(error, response){
 		if(error){
 			console.log(error);
 			res.end("error");
@@ -42,73 +47,6 @@ app.get('/send',function(req,res){
 		}
 	});
 });
-
-
-
-function handleMail(req, res){
-	var transporter = nodemailer.createTransport({
-		service: 'Gmail',
-		auth: {
-			user: 'jonesautomotive.mailer@gmail.com',
-			pass: 'ilikepie123'
-		}
-	});
-
-	var text = 'hello world from \n\n' + req.body.name;
-
-	var mailOptions = {
-		from: 'nodbody@gmail.com',
-		to: 'samualkholmes@gmail.com',
-		subject: 'Email Example',
-		text: text
-	}
-
-	transporter.sendMail(mailOptions, function(error, info){
-		if(error){
-			console.log(error);
-			res.json({yo: 'error'});
-		}else{
-			console.log('Message sent: ' + info.response);
-			res.json({yo: info.response});
-		}
-	});
-}
-
-// set the home page route
-app.get('/', function(req, res) {
-    // ejs render automatically looks in the views folder
-    res.render('index');
-});
-
-app.get('/mail', function(req, res){
-	var transporter = nodemailer.createTransport({
-		service: 'Gmail',
-		auth: {
-			user: 'jonesautomotive.mailer@gmail.com',
-			pass: 'ilikepie123'
-		}
-	});
-
-	var text = 'hello world from \n\n' + req.body.name;
-
-	var mailOptions = {
-		from: 'nodbody@gmail.com',
-		to: 'samualkholmes@gmail.com',
-		subject: 'Email Example',
-		text: text
-	}
-
-	transporter.sendMail(mailOptions, function(error, info){
-		if(error){
-			console.log(error);
-			res.json({yo: 'error'});
-		}else{
-			console.log('Message sent: ' + info.response);
-			res.json({yo: info.response});
-		}
-	});
-});
-
 
 app.listen(port, function() {
 	console.log('Running on http://localhost:' + port);

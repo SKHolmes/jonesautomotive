@@ -21,10 +21,61 @@
 }
 
 #map {
-        height: 250px;
-        width: 400px;
-        border-style: solid;
-        border-width: 3px;
-        border-color: #000000;
-        border-radius: 3px;
-      }
+    margin: auto;
+    height: 250px;
+    width: 400px;
+    border-style: solid;
+    border-width: 3px;
+    border-color: #000000;
+    border-radius: 3px;
+}
+
+#subject{
+    min-width: 100%;
+    margin: 4px;
+    max-height: 10%;
+    border-radius: 3px;
+}
+
+#content{
+    min-width: 100%;
+    margin: 4px;
+    max-height: 40%;
+    border-radius: 3px;
+    resize: none;
+}
+
+#send_email{
+    min-width: 100%;
+    margin: 4px;
+    max-height: 10%;
+    border-radius: 3px;
+}
+
+#from{
+    min-width: 100%;
+    margin: 4px;
+    max-height: 10%;
+    border-radius: 3px;
+}
+
+#number{
+    min-width: 100%;
+    margin: 4px;
+    max-height: 10%;
+    border-radius: 3px;
+}
+
+#name{
+    min-width: 100%;
+    margin: 4px;
+    max-height: 10%;
+    border-radius: 3px;
+}
+.partition{
+    text-align: center;
+}
+
+h1{
+    text-decoration: underline;
+}
