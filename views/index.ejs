@@ -107,7 +107,7 @@
                 $("#message").text("Sending E-mail...Please wait");
                 text = (text + "\nContact Number: " + number);
                 subject = (subject + " - " + name);
-                $.get("https://jonesautomotive.herokuapp.com//send",{to:'samualkholmes@gmail.com',subject:subject,text:text},function(data){
+                $.get("https://jonesautomotive.herokuapp.com/send",{to:'samualkholmes@gmail.com',subject:subject,text:text},function(data){
                     if(data=="sent")
                     {
                         $("#message").empty().html("Email has been sent. We will get back to you as soon as we can!");
