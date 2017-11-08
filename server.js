@@ -33,7 +33,7 @@ app.get('/', function(req, res) {
 app.get('/send',function(req,res){
 	var mailOptions={
 		from : 'jonesautomotive.mailer@gmail.com',
-		to : req.query.to,
+		to:'samualkholmes@gmail.com'
 		subject : req.query.subject,
 		text : req.query.text,
 
@@ -42,7 +42,7 @@ app.get('/send',function(req,res){
 	transport.sendMail(mailOptions, function(error, response){
 		if(error){
 			console.log(error);
-			res.end("error" + error + '\n\n\n' + response);
+			res.end(error + '\n\n\n' + response);
 		}else{
 			console.log("Message sent: " + response);
 			res.end("sent");
