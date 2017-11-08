@@ -33,10 +33,9 @@ app.get('/', function(req, res) {
 app.get('/send',function(req,res){
 	var mailOptions={
 		from : 'jonesautomotive.mailer@gmail.com',
-		to:'samualkholmes@gmail.com'
+		to:'samualkholmes@gmail.com',
 		subject : req.query.subject,
-		text : req.query.text,
-
+		text : req.query.text
 	}
 	console.log(mailOptions);
 	transport.sendMail(mailOptions, function(error, response){
