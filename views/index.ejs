@@ -331,7 +331,20 @@
                                         else{
                                             $("#message").empty().html("Sorry! There was a problem in sending your email please try again.");
                                         }
+                                    $.get("localhost:8080/send")
                                     });
+
+                                    /*$.get("http://localhost:8080/send",{to:'samualkholmes@gmail.com',subject:subject,text:text},function(data){
+                                        console.log("Response here: " + data);
+                                        if(data=="sent")
+                                        {
+                                            $("#message").empty().html("Email has been sent. We will get back to you as soon as we can!");
+                                        }
+                                        else{
+                                            $("#message").empty().html("Sorry! There was a problem in sending your email please try again.");
+                                        }
+                                    
+                                    });*/
                                 });
                             });
                         </script>

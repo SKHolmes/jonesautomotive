@@ -4,15 +4,15 @@ var nodemailer = require("nodemailer");
 var smtpTransport = require('nodemailer-smtp-transport');
 var router = express.Router();
 
-var transport = nodemailer.createTransport((smtpTransport({
+var transport = nodemailer.createTransport({
   service: 'gmail',
-  secureConnection: false, // use SSL
-  port: 587, // port for secure SMTP
+  //secureConnection: false, // use SSL
+  //port: 587, // port for secure SMTP
   auth: {
     user: 'jonesautomotive.mailer@gmail.com',
-    pass: 'ilikepie123'
+    pass: 'tysclzukmvzsipmw'
   }
-})));
+});
 
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
@@ -32,9 +32,11 @@ app.get('/', function(req, res) {
 
 app.get('/send',function(req,res){
 	var mailOptions={
+		from : 'jonesautomotive.mailer@gmail.com',
 		to : req.query.to,
 		subject : req.query.subject,
-		text : req.query.text
+		text : req.query.text,
+
 	}
 	console.log(mailOptions);
 	transport.sendMail(mailOptions, function(error, response){
@@ -42,7 +44,7 @@ app.get('/send',function(req,res){
 			console.log(error);
 			res.end("error");
 		}else{
-			console.log("Message sent: " + response.message);
+			console.log("Message sent: " + response);
 			res.end("sent");
 		}
 	});
