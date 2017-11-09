@@ -323,7 +323,8 @@
                                     text = (text + "\n\nContact Email: " + email);
                                     text = (text + "\nContact Number: " + number);
                                     subject = (subject + " - " + name);
-                                    $.get("http://jonesautomotive.co.nz/send",{subject:subject,text:text},function(data){
+                                    $.get("http://www.jonesautomotive.co.nz/send",{subject:subject,text:text},function(data){
+                                    //$.get("http://localhost:8080/send",{subject:subject,text:text},function(data){
                                         if(data=="sent")
                                         {
                                             $("#message").empty().html("Email has been sent. We will get back to you as soon as we can!");
